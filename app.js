@@ -10,11 +10,12 @@ var session = require('express-session');
 var methodOverride = require('method-override');
 var db = require('./db.js');
 
-mongoose.connect('mongodb://localhost/project-2');
+mongoose.connect('mongodb://localhost/myTrack');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var tracks = require('./routes/tracks');
+var index = require('./routes/index.js'); // require index
+var users = require('./routes/users.js'); // require users
+var tracks = require('./routes/tracks.js'); // require tracks
+var sessions = require('./routes/sessions.js'); // require sessions
 
 var app = express();
 
@@ -37,9 +38,10 @@ app.use(session({
     saveUninitialized: false
 }));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/tracks', tracks);
+app.use('/', index); // use index controllers
+app.use('/users', users); //use users controllers
+app.use('/tracks', tracks); //use tracks controllers
+app.use('/sessions', sessions) // use session controllers
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

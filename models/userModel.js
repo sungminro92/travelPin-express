@@ -1,5 +1,5 @@
-var Schema = require('../db/schema.js');
+var Schema = require('../db/schema.js'); //require db/schema.js
 var mongoose = require('mongoose');
 
-var User = Schema.User;
+var User = Schema.User; 
 module.exports = User;

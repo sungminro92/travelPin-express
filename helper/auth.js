@@ -1,4 +1,4 @@
-var User = require('../models/user.js'); //requiring user model
+var User = require('../models/userModel.js'); //requiring user model
 var bcrypt = require('bcrypt');
 
 
@@ -42,7 +42,6 @@ function authorize(req, res, next) {
     next();
   };
 };
-
 
 
 module.exports = {

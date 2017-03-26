@@ -3,18 +3,20 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'My tracks' });
+  res.render('index', { 
+  	title: 'My tracks' // title is used for headline
+  });
 });
+
+// SIGN UP PAGE
+router.get('/signup', function(req, res){
+  res.render('user/signup.hbs');
+});
+// SIGN IN PAGE
+router.get('/signin', function(req, res){
+  res.render('user/signin.hbs');
+});
+
 
 module.exports = router;
 
-// INDEX USERS
-
-router.get('/', function(req, res) {
-	User.find({})
-		.exec(function(err, users){
-			if(err) {console.log(err); }
-			console.log(users);
-			res.render('users')
-		});
-});

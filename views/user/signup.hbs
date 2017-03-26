@@ -1,0 +1,29 @@
+<form action="/users" method="post">
+  <div>
+    <label for="email">email</label>
+    <input type="text" name="email">
+  </div>
+  <div>
+  	<label for="username">username</label>
+  	<input type="text" name="username">
+  </div>
+  <div>
+    <label for="password">password</label>
+    <input type="text" name="password">
+  </div>
+
+  <input type="submit" value="Sign up">
+</form>
+
+
+<nav>
+	<ul>
+    <li class="nav"><a href="/signup">sign up</a> | </li>
+    <li class="nav"><a href="/sessions/login">login</a> | </li>
+    <li class="nav">
+    <form method="post" action="/sessions?_method=DELETE">
+    	<button class="logout">logout</button>
+    </form>
+    </li>
+  	</ul>
+</nav>

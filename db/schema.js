@@ -1,18 +1,19 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema; // define mongoose Schema
 
 var TrackSchema = new Schema({
   title: String,
   location: String,
   created_at: Date,
   updated_at: Date,
-  imgUrl: String,
-})
+  imgUrl: String
+});
 
-TrachShcema.pre('save', function(next) {
+TrackSchema.pre('save', function(next) {
   now = new Date()
   this.updated_at = now;
   if (!this.created_at) {
-    this created_at = now;
+    this.created_at = now;
   }
   next();
 });
@@ -23,11 +24,11 @@ var UserSchema = new Schema({
   password: String,
   travelCountry: String,
   created_at: Date, 
-  updated_at: Date
-  tracks: [tracksSchema]
+  updated_at: Date,
+  tracks: [TrackSchema]
 });
 
-ProjectIdeaSchema.pre('save', function(next){
+UserSchema.pre('save', function(next){
   now = new Date();
   this.updated_at = now;
   if ( !this.created_at ) {
