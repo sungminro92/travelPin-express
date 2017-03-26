@@ -1,10 +1,11 @@
 var mongoose = require('mongoose')
 
 var TrackSchema = new Schema({
-  title:
-  location:
-  created_at:
-  updated_at:
+  title: String,
+  location: String,
+  created_at: Date,
+  updated_at: Date,
+  imgUrl: String,
 })
 
 TrachShcema.pre('save', function(next) {
@@ -18,9 +19,10 @@ TrachShcema.pre('save', function(next) {
 
 var UserSchema = new Schema({
   name: String,
-  emailAddress: String,
+  email: String,
+  password: String,
   travelCountry: String,
-  created_at: Date,
+  created_at: Date, 
   updated_at: Date
   tracks: [tracksSchema]
 });
@@ -34,8 +36,11 @@ ProjectIdeaSchema.pre('save', function(next){
   next();
 });
 
-var TrackSchema = new Schema({
-  title:
-  location: String,,
+var UserModel = mongoose.model("User", UserSchema);
+var TrackModel = mongoose.model("track", TrackSchema);
 
-})
+module.exports = {
+  User: UserModel,
+  Track: TrackModel,
+
+}

@@ -7,3 +7,14 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+// INDEX USERS
+
+router.get('/', function(req, res) {
+	User.find({})
+		.exec(function(err, users){
+			if(err) {console.log(err); }
+			console.log(users);
+			res.render('users')
+		});
+});

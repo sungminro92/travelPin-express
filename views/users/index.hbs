@@ -1,0 +1,10 @@
+<h1>User Lists</h1>
+<ul>
+  {{#each users}}
+    <li><a href="/users/{{this.id}}">{{this.name}}</a></li>
+    <br/>
+  {{/each}}
+</ul>
+
+<a href="/users/new">Add New User</a>
+

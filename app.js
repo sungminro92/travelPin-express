@@ -8,13 +8,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
-var db = require('./db');
+var db = require('./db.js');
 
 mongoose.connect('mongodb://localhost/project-2');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var authors = require('./routes/authors');
+var tracks = require('./routes/tracks');
 
 var app = express();
 
@@ -39,7 +39,7 @@ app.use(session({
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/authors', authors);
+app.use('/tracks', tracks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
