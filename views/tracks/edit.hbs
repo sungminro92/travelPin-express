@@ -1,8 +1,8 @@
 <h1>Edit {{user.username}}'s Track</h1>
 <form action="/user/{{user.id}}/{{tracks.id}}?_method=PUT" method="POST">
   <div>
-    <label for="username">User name:</label>
-    <input type="text" name="username" value="{{user.username}}"/>
+    <label for="title">Title</label>
+    <input type="text" name="username" value="{{tracks.title}}"/>
   </div>
   <div>
     <label for="email">Email</label>

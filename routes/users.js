@@ -88,6 +88,7 @@ router.post('/:id', function(req, res){
 // 	})
 // }
 
+
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){
 	var user = new User({  // TO-DO: handle duplicate email/id

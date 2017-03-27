@@ -6,7 +6,8 @@ var TrackSchema = new Schema({
   location: String,
   created_at: Date,
   updated_at: Date,
-  imgUrl: String
+  imgUrl: String,
+  Liked: Boolean
 });
 
 TrackSchema.pre('save', function(next) {
