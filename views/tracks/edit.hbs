@@ -1,1 +1,26 @@
-edit.hbs
+<h1>Edit {{user.username}}'s Track</h1>
+<form action="/user/{{user.id}}/{{tracks.id}}?_method=PUT" method="POST">
+  <div>
+    <label for="username">User name:</label>
+    <input type="text" name="username" value="{{user.username}}"/>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="text" name="email" value="{{user.email}}">
+  </div>
+  <div>
+  	<label for="travelCountry">Traveling country:</label>
+  	<input name="travelCountry" value="{{user.travelCountry}}">
+  </div>
+  <div>
+    <input type="submit" value="Update User"/>
+  </div>
+</form>
+
+<nav>
+	<ul>
+    <li class="nav">
+      <a href="/{{user.id}}">Return to Home</a>
+    </li>
+  </ul>
+</nav>

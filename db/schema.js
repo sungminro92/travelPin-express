@@ -30,8 +30,7 @@ var UserSchema = new Schema({
 
 UserSchema.pre('save', function(next){
   now = new Date();
-  this.tracks = [];
-  this.updated_at = now;
+  this.updated_at = now;;
   if ( !this.created_at ) {
     this.created_at = now;
   }
@@ -44,5 +43,4 @@ var TrackModel = mongoose.model("track", TrackSchema);
 module.exports = {
   User: UserModel,
   Track: TrackModel,
-
 }

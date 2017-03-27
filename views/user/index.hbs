@@ -1,16 +1,24 @@
+<form method="post" action="/sessions?_method=DELETE">
+        <button class="logout">logout</button>
+    </form>
+
 <h1>{{user.username}}'s Profile</h1>
 <ul>
     <li>Name: <a href="/user/{{user.id}}">{{user.username}}</a></li>
     <li>Email: {{user.email}}</li>
     <li>Traveling Country: {{user.travelCountry}}</li>
-    <li>Travel Start Date: {{user.created_at}}</li>
+    <li>Travel Start date: {{user.created_at}}</li>
     <li>Latest update: {{user.updated_at}}</li>
+    <a href="/user/{{user.id}}/edit">Edit Profile</a>
+</ul>
+    <br>
+    <br>
 
     <!-- PUT IMG URL AS BACKGROUND TO DIVS -->
-    <li>My tracks:
-      {{#each tracks}}
-        <div class="tracks"><a href="#"{{user.tracks}}></a></div>
-      {{/each}}
-    </li>
-</ul>
+    <h3>My Tracks:</h3><a href="/user/{{user.id}}/new">Add New Track</a>
+    {{#each tracks}}
+        <li><a href="/user/tracks/{{this.id}}">{{this.title}}</a></li>
+    {{/each}}
+    </ul>
+
 

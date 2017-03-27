@@ -1,0 +1,18 @@
+<h1> Create New Track </h1>
+<form action="/user/{{user.id}}" method="POST">
+  <div>
+    <label for="title">Track Title</label>
+    <input type="text" name="title"/>
+  </div>
+  <div>
+    <label for="location">Location</label>
+    <input type="text" name="location"/>
+  </div>
+  <div>
+  	<label for="imgUrl">Image Url</label>
+  	<input type="text" name="imgUrl" value="Put image url here">
+  </div>
+  <div>
+    <input type="submit" value="Create Track"/>
+  </div>
+</form>
