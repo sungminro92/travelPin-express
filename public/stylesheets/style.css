@@ -62,3 +62,29 @@ div.trackBoxHolder {
 	height: 30%;
 	margin: none;
 }
+
+/* TRACK DETAIL SHOW PAGE*/
+.trackImage {
+	background-color: yellow;
+	width: 75%;
+	padding-bottom: 45%;
+	margin: 0 auto;
+}
+
+div.trackDetail {
+	background-color: red;
+	width: 75%;
+	height: 300px;
+	margin: 0 auto;
+}
+
+div.editDeleteBtn {
+	float: right;
+	margin: 1.5%;
+}
+
+button.editDelete {
+	display: inline;
+}
+
+/**/

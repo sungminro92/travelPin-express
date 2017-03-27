@@ -1,0 +1,14 @@
+<h1> {{track.title}} </h1>
+<div class="trackImage"></div>
+<div class="trackDetail">
+  
+    <div class="editDeleteBtn">
+      <form action="/user/{{user.id}}/tracks/{{track.id}}/edit">
+        <button class="editDelete" type="submit" value="Edit">Edit track</button>
+      </form>
+      <form action="/user/{{../user.id}}/tracks/{{track.id}}?_method=DELETE" method="POST">
+        <button class="editDelete" type="submit" value="Delete">Delete track</button>
+      </form>
+    </div>
+ 
+</div>

@@ -1,16 +1,16 @@
 <h1>Edit {{user.username}}'s Track</h1>
-<form action="/user/{{user.id}}/{{tracks.id}}?_method=PUT" method="POST">
+<form action="/user/{{../user.id}}/tracks/{{track.id}}?_method=PUT" method="POST">
   <div>
-    <label for="title">Title</label>
-    <input type="text" name="username" value="{{tracks.title}}"/>
+    <label for="title"> Title: </label>
+    <input type="text" name="title" value="{{track.title}}"/>
   </div>
   <div>
-    <label for="email">Email</label>
-    <input type="text" name="email" value="{{user.email}}">
+    <label for="location"> Lcation: </label>
+    <input type="text" name="location" value="{{track.location}}">
   </div>
   <div>
-  	<label for="travelCountry">Traveling country:</label>
-  	<input name="travelCountry" value="{{user.travelCountry}}">
+  	<label for="imageUpload"> Select image file to upload: </label>
+  	<input type="file" name="imageUrl" value="{{track.imgUrl}}">
   </div>
   <div>
     <input type="submit" value="Update User"/>
@@ -20,7 +20,7 @@
 <nav>
 	<ul>
     <li class="nav">
-      <a href="/{{user.id}}">Return to Home</a>
+      <a href="/{{../user.id}}">Return to Home</a>
     </li>
   </ul>
 </nav>

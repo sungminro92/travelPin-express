@@ -13,7 +13,6 @@
 </ul>
     <br>
     <br>
-
     <!-- PUT IMG URL AS BACKGROUND TO DIVS -->
     <h3>My Tracks:</h3><a class="addCllick" href="/user/{{user.id}}/new">Add New Track</a>
     <br>
@@ -21,7 +20,7 @@
     <div class="trackBoxHolder">
         {{#each tracks}}
         <!-- {{user.id}} isn't finding user.id number -->
-        <a href="/user/{{user.id}}/tracks/{{this.id}}">
+        <a href="/user/{{../user.id}}/tracks/{{this.id}}">
             <div class="trackBox">
                 <p>{{this.title}}</p>
             </div>

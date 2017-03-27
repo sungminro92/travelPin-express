@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 var User = require('../models/userModel.js');
 var Track = require('../models/trackModel.js');
 var authHelpers = require('../helper/auth.js');
@@ -46,7 +46,6 @@ router.put('/:id', function(req, res){
 });
 
 
-
 // CREATE A NEW TRACK on user/index.hbs.
 // ROUTE TO VIEW new.hbs
 router.get('/:id/new', function(req, res){
@@ -88,6 +87,18 @@ router.post('/:id', function(req, res){
 // 	})
 // }
 
+router.get('/:userId/tracks/:id', function showTrackDetail(req, res) {
+ 	 User.findById(req.params.userId)
+  	.exec(function(err, user) {
+    	if (err) console.log(err);
+    	const trackDetail = user.tracks.id(req.params.id);
+    	console.log(user)
+    	res.render('tracks/show.hbs', {
+      		user: user,
+      		track: trackDetail
+   		 });
+  	});
+});
 
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){
