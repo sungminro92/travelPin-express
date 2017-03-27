@@ -1,24 +1,16 @@
-<h1>{{user.username}}'s' Profile</h1>
+<h1>{{user.username}}'s Profile</h1>
 <ul>
-    <li>Name: <a href="/user/{{this.id}}">{{this.username}}</a></li>
-    <li>Email: {{user.user}}</li>
-    <li>Traveling Country: {{this.travelCountry}}</li>
-    <li>Travel Start Date: {{this.created_at}}</li>
-    <li>Latest update: {{this.updated_at}}</li>
-    {{#each user.tracks}}
-    <li><a href="#"{{this.tracks}}></a></li> 
-    {{/each}}
+    <li>Name: <a href="/user/{{user.id}}">{{user.username}}</a></li>
+    <li>Email: {{user.email}}</li>
+    <li>Traveling Country: {{user.travelCountry}}</li>
+    <li>Travel Start Date: {{user.created_at}}</li>
+    <li>Latest update: {{user.updated_at}}</li>
+
+    <!-- PUT IMG URL AS BACKGROUND TO DIVS -->
+    <li>My tracks:
+      {{#each tracks}}
+        <div class="tracks"><a href="#"{{user.tracks}}></a></div>
+      {{/each}}
+    </li>
 </ul>
 
-<div>
-	<ul>
-  {{#each tracks}}
-    <li class="nav"><a href="#">image</a> | </li>
-    <li class="nav"><a href="#">login</a> | </li>
-    <li class="nav">
-      <form method="post" action="/sessions?_method=DELETE">
-        <button>logout</button>
-      </form>
-    </li>
-  	</ul>
- </div>
