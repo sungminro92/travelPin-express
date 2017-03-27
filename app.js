@@ -39,8 +39,8 @@ app.use(session({
 }));
 
 app.use('/', index); // use index controllers
-app.use('/users', users); //use users controllers
-app.use('/tracks', tracks); //use tracks controllers
+app.use('/user', users); //use users controllers
+app.use('/user/tracks', tracks); //use tracks controllers
 app.use('/sessions', sessions) // use session controllers
 
 // catch 404 and forward to error handler

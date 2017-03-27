@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 router.get('/signup', function(req, res){
   res.render('user/signup.hbs');
 });
+
 // SIGN IN PAGE
 router.get('/signin', function(req, res){
   res.render('user/signin.hbs');

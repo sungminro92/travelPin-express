@@ -30,6 +30,7 @@ var UserSchema = new Schema({
 
 UserSchema.pre('save', function(next){
   now = new Date();
+  this.tracks = [];
   this.updated_at = now;
   if ( !this.created_at ) {
     this.created_at = now;

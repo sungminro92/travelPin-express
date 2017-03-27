@@ -10,7 +10,8 @@ router.get('/:id', function(req, res, next) {
 	  if (err) console.log(err);
 	  console.log(user);
 	  res.render('user/index', {
-	  	user: user
+	  	user: user,
+	  	tracks: user.tracks
 	  })
 	});
 });
@@ -19,7 +20,8 @@ router.post('/', authHelpers.createSecure, function(req, res){
 	var user = new User({  // TO-DO: handle duplicate email/id
 		email: req.body.email,
 	  username: req.body.username,
-	  password: res.hashedPassword
+	  password: res.hashedPassword,
+	  travelCountry: res.body.travelCountry
 	});
 
 	user.save(function(err, user){
