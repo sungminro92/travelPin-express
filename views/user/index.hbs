@@ -1,6 +1,6 @@
-<h1>{{user.name}}'s' Profile</h1>
+<h1>{{user.username}}'s' Profile</h1>
 <ul>
-    <li>Name: <a href="/user/{{this.id}}">{{this.name}}</a></li>
+    <li>Name: <a href="/user/{{this.id}}">{{this.username}}</a></li>
     <li>Email: {{this.email}}</li>
     <li>Traveling Country: {{this.travelCountry}}</li>
     <li>Travel Start Date: {{this.created_at}}</li>
@@ -9,16 +9,6 @@
     <li><a href="#"{{this.tracks}}></a></li> 
     {{/each}}
 </ul>
-
-var UserSchema = new Schema({
-  name: String,
-  email: String,
-  password: String,
-  travelCountry: String,
-  created_at: Date, 
-  updated_at: Date,
-  tracks: [TrackSchema]
-});
 
 <div>
 	<ul>
