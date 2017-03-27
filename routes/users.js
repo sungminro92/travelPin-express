@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/userModel.js');
+var Track = require('../models/trackModel.js');
 var authHelpers = require('../helper/auth.js');
 
 /* GET users listing. */
@@ -31,5 +32,13 @@ router.post('/', authHelpers.createSecure, function(req, res){
 	});
 
 });
+
+// CREATE A NEW TRACK on user/index.hbs.
+router.post('/:id', function(req, res){
+	User.findById(req.params.id)
+	.exec(function(err, user){
+		user.tracks.push(new Track
+	})
+})
 
 module.exports = router;
