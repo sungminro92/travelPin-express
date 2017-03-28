@@ -38,7 +38,7 @@ nav form {
 	background-color: yellow;
 }
 
-div.trackBoxHolder {
+div.pinBoxHolder {
 	position: relative;
 	margin: 0 auto;
 	width: 90%;
@@ -46,7 +46,7 @@ div.trackBoxHolder {
 	background-color: red;
 }
 
-.trackBox {
+.pinBox {
 	background-color: yellow;
 	position: relative;
 	float: left;
@@ -55,7 +55,7 @@ div.trackBoxHolder {
 	margin: 1.6%;
 }
  
-.trackContent {
+.pinContent {
 	background-color: black;
 	position: relative;
 	width: 100%;
@@ -64,14 +64,14 @@ div.trackBoxHolder {
 }
 
 /* TRACK DETAIL SHOW PAGE*/
-.trackImage {
+.pinImage {
 	background-color: yellow;
 	width: 75%;
 	padding-bottom: 45%;
 	margin: 0 auto;
 }
 
-div.trackDetail {
+div.pinDetail {
 	background-color: red;
 	width: 75%;
 	height: 300px;

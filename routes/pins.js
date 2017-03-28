@@ -1,45 +1,45 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
 var User = require('../models/userModel.js');
-var Track = require('../models/trackModel.js');
+var Pin = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
 // GET ROUTE FOR VIEWING DETAILS OF EACH TRACK
-router.get('user/:userId/tracks/:id', function showTrackDetail(req, res) {
+router.get('user/:userId/pins/:id', function showTrackDetail(req, res) {
  	 User.findById(req.params.userId)
   	.exec(function(err, user) {
     	if (err) console.log(err);
-    	const trackDetail = user.tracks.id(req.params.id);
+    	const pinDetail = user.pins.id(req.params.id);
     	console.log(user)
-    	res.render('tracks/show.hbs', {
+    	res.render('pins/show.hbs', {
       		user: user,
-      		track: trackDetail
+      		pin: pinDetail
    		 });
   	});
 });
 
-router.get('user/:userId/tracks/:id/edit', function editProjectIdea(req, res) {
+router.get('user/:userId/pins/:id/edit', function editProjectIdea(req, res) {
   User.findById(req.params.userId)
     .exec(function (err, user){
       if (err) { console.log(err); }
-      const trackDetail = user.tracks.id(req.params.id);
+      const pinDetail = user.pins.id(req.params.id);
 
-      res.render('tracks/edit.hbs', {
+      res.render('pins/edit.hbs', {
         user: user,
-        track: trackDetail
+        pins: pinsDetail
       });
     });
 });
 
 // // EDIT TRACK & RENDER TO edit.hbs
-// router.get('user/:userId/tracks/:id/edit', function editTrack(req, res) {
+// router.get('user/:userId/pinss/:id/edit', function editTrack(req, res) {
 //   User.findById(req.params.userId)
 //     .exec(function (err, user){
 //       if (err) { console.log(err); }
-//       const trackDetail = user.tracks.id(req.params.id);
-//       res.render('tracks/edit.hbs', {
+//       const pinsDetail = user.pinss.id(req.params.id);
+//       res.render('pinss/edit.hbs', {
 //         user: user,
-//         track: trackDetail
+//         pins: trackDetail
 //       });
 //     });
 // });

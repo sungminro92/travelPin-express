@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
 var User = require('../models/userModel.js');
-var Track = require('../models/trackModel.js');
+var Track = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
 /* GET users listing. */
@@ -14,7 +14,7 @@ router.get('/:id', authHelpers.authorized, function(req, res) {
 	  console.log(user);
 	  res.render('user/index', {
 	  	user: user,
-	  	tracks: user.tracks
+	  	pins: user.pins
 	  });
 	});
 });
@@ -53,10 +53,10 @@ router.get('/:id/new', function(req, res){
 	User.findById(req.params.id)
 	.exec(function(err, user){
 		console.log(user.id)
-		console.log(user.tracks)
-		res.render('tracks/new.hbs', {
+		console.log(user.pins)
+		res.render('pins/new.hbs', {
 			user: user,
-			tracks: user.tracks
+			pins: user.pins
 		});
 	});
 });                                                                                                                                                                                                                                                                                                                                                                                                                       
@@ -66,7 +66,7 @@ router.get('/:id/new', function(req, res){
 router.post('/:id', function(req, res){
 	User.findById(req.params.id)
 	.exec(function(err, user){
-		user.tracks.push(new Track({
+		user.pins.push(new Track({
 			title: req.body.title,
 			location: req.body.location,
 			imgUrl: req.body.imgUrl
@@ -84,19 +84,19 @@ router.post('/:id', function(req, res){
 // router.delete('/:id', function(req, res){
 // 	User.findById(req.params.id)
 // 	.exec(function(err, user){
-// 		user.tracks.
+// 		user.pins.
 // 	})
 // }
 
-router.get('/:userId/tracks/:id', function showTrackDetail(req, res) {
+router.get('/:userId/pins/:id', function showTrackDetail(req, res) {
  	 User.findById(req.params.userId)
   	.exec(function(err, user) {
     	if (err) console.log(err);
-    	const trackDetail = user.tracks.id(req.params.id);
+    	const pinDetail = user.pins.id(req.params.id);
     	console.log(user)
-    	res.render('tracks/show.hbs', {
+    	res.render('pins/show.hbs', {
       		user: user,
-      		track: trackDetail
+      		pin: pinDetail
    		 });
   	});
 });
@@ -105,13 +105,13 @@ router.get('/:userId/tracks/:id', function showTrackDetail(req, res) {
 
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){
-	Track.find({},function (err, tracks) {
+	Track.find({},function (err, pins) {
  		var user = new User({  // TO-DO: handle duplicate email/id
 			email: req.body.email,
 		  username: req.body.username,
 		  password: res.hashedPassword,
 		  travelCountry: req.body.travelCountry,
-		  tracks: tracks
+		  pins: pins
 		});
 		user.save(function(err, user){
 		if (err) console.log(err);

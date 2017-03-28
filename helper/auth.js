@@ -1,4 +1,5 @@
 var User = require('../models/userModel.js'); //requiring user model
+var Pin = require('../models/pinModel.js');
 var bcrypt = require('bcrypt');
 
 

@@ -1,13 +1,13 @@
-<h1> {{track.title}} </h1>
-<div class="trackImage"></div>
-<div class="trackDetail">
+<h1> {{pin.title}} </h1>
+<div class="pinImage"></div>
+<div class="pinDetail">
   
     <div class="editDeleteBtn">
-      <form action="/user/{{user.id}}/tracks/{{track.id}}/edit">
-        <button class="editDelete" type="submit" value="Edit">Edit track</button>
+      <form action="/user/{{user.id}}/pins/{{pin.id}}/edit">
+        <button class="editDelete" type="submit" value="Edit">Edit pin</button>
       </form>
-      <form action="/user/{{../user.id}}/tracks/{{track.id}}?_method=DELETE" method="POST">
-        <button class="editDelete" type="submit" value="Delete">Delete track</button>
+      <form action="/user/{{../user.id}}/pins/{{pin.id}}?_method=DELETE" method="POST">
+        <button class="editDelete" type="submit" value="Delete">Delete pin</button>
       </form>
     </div>
  
