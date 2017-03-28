@@ -3,28 +3,18 @@
     </form>
 
 <h1>{{user.username}}'s Profile</h1>
-<ul>
-    <li>Name: <a href="/user/{{user.id}}">{{user.username}}</a></li>
-    <li>Email: {{user.email}}</li>
-    <li>Traveling Country: {{user.travelCountry}}</li>
-    <li>Travel Start date: {{user.created_at}}</li>
-    <li>Latest update: {{user.updated_at}}</li>
+    <p>Name: <a href="/user/{{user.id}}">{{user.username}}</a></p>
+    <p>Email: {{user.email}}</p>
+    <p>Traveling Country: {{user.travelCountry}}</p>
+    <p>Travel Start date: {{user.created_at}}</p>
+    <p>Latest update: {{user.updated_at}}</p>
     <a href="/user/{{user.id}}/edit">Edit Profile</a>
-</ul>
+
+    <br>
     <br>
     <br>
     <!-- PUT IMG URL AS BACKGROUND TO DIVS -->
-    <h3>My Pins:</h3><a class="addCllick" href="/user/{{user.id}}/new">Add New Pin</a>
+    <a class="viewMyPin" href="/user/{{user.id}}/pins">View my pins</a>
     <br>
-    <br>
-    <div class="pinBoxHolder">
-        {{#each pins}}
-        <!-- {{user.id}} isn't finding user.id number -->
-        <a href="/user/{{../user.id}}/pins/{{this.id}}">
-            <div class="pinBox">
-                <p>{{this.title}}</p>
-            </div>
-        </a>
-        {{/each}}
-    </div>
-
+    <a class="exploreOthers" href="/user/pins">Explore others</a>
+    

@@ -16,26 +16,26 @@ Pin.remove({}, function(err){
 
 // CREATE NEW PIN
 var pinOne = new Pin({
-	title: "Pikachu1",
-	location: 'Kanto',
-	imgUrl: 'http://media.comicbook.com/2016/07/sadpikachu-189263.png'
+	title: "New York Bull",
+	location: 'Broadway & Morris St, New York',
+	imgUrl: 'http://i.imgur.com/aCEcJys.jpg?1'
 });
 
 var pinTwo = new Pin({
-	title: "Pikachu2",
-	location: 'Johto',
-	imgUrl: 'http://media.comicbook.com/2016/07/sadpikachu-189263.png'
+	title: "QLIC",
+	location: '4142 24th Street, Long Island City',
+	imgUrl: 'http://i.imgur.com/nMvvsAy.jpg'
 });
 
 var pinThree = new Pin({
-	title: "Pikachu3",
-	location: 'Hoenn',
-	imgUrl: 'http://media.comicbook.com/2016/07/sadpikachu-189263.png'
+	title: "Apple Store",
+	location: '59th street & 5th ave, New York',
+	imgUrl: 'http://i.imgur.com/9xVf8jo.jpg'
 });
 
 // save the users
 pinOne.save(function(err) {
-  if (err) console.log(err);
+  if (err) console.log(err);q
   console.log('Track created!');
 });
 

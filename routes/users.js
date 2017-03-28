@@ -1,26 +1,39 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
-var User = require('../models/userModel.js');
+var Users = require('../models/userModel.js');
 var Pin = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
 /* GET users listing. */
 // ROUTE FOR USER PROFILE PAGE
 router.get('/:id', function(req, res) {
-	User.findById(req.params.id)
+	Users.findById(req.params.id)
 	.exec(function(err, user) {
-	  if (err) console.log(err);
-	  console.log(user);
-	  res.render('user/index', {
+	  	if (err) console.log(err);
+	  	console.log(user);
+	  	res.render('user/index', {
 	  	user: user,
 	  	pins: user.pins
-	  });
+	  	});
 	});
 });
 
+
+// GET ROUTE FOR OTHER USERS' PIN INDEX PAGE
+router.get('/pins', function(req, res) {
+	Users.find({})
+	.exec(function(err, user) {
+		if (err) console.log(err);
+		res.render('user/show.hbs', {
+			users: user,
+			pins: user.pins
+		})
+	})
+})
+
 // EDIT USER ROUTE + RENDER TO EDIT PAGE
 router.get('/:id/edit', function(req, res) {
- 	 User.findById(req.params.id)
+ 	 Users.findById(req.params.id)
   	.exec(function(err, user) {
     	if (err) console.log(err);
     	res.render('user/edit.hbs', {
@@ -31,7 +44,7 @@ router.get('/:id/edit', function(req, res) {
 
 // USER UPDATE ROUTE + RENDER BACK TO INDEX PAGE
 router.put('/:id', function(req, res){
-  User.findByIdAndUpdate(req.params.id, {
+  Users.findByIdAndUpdate(req.params.id, {
     username: req.body.username,
     email: req.body.email,
     travelCountry: req.body.travelCountry
@@ -49,7 +62,7 @@ router.put('/:id', function(req, res){
 // CREATE A NEW TRACK on user/index.hbs.
 // ROUTE TO VIEW new.hbs
 router.get('/:id/new', function(req, res){
-	User.findById(req.params.id)
+	Users.findById(req.params.id)
 	.exec(function(err, user){
 		console.log(user.id)
 		console.log(user.pins)
@@ -63,7 +76,7 @@ router.get('/:id/new', function(req, res){
 
 // CREATE A NEW TRACK ROUTE
 router.post('/:id', function(req, res){
-	User.findById(req.params.id)
+	Users.findById(req.params.id)
 	.exec(function(err, user){
 		user.pins.push(new Track({
 			title: req.body.title,
@@ -88,7 +101,7 @@ router.post('/:id', function(req, res){
 // }
 
 router.get('/:userId/pins/:id', function showTrackDetail(req, res) {
- 	 User.findById(req.params.userId)
+ 	 Users.findById(req.params.userId)
   	.exec(function(err, user) {
     	if (err) console.log(err);
     	const pinDetail = user.pins.id(req.params.id);

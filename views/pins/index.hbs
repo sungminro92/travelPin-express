@@ -1,10 +1,17 @@
-<ul>
-  {{#each pins}}
-    <li><a href="/user/{{this.id}}">{{this.first_name}}</a></li>
-    <li>{{this.email}}</li>
-    <br/>
-  {{/each}}
-</ul>
+<h1> MY ALBUM </h1>
+<h2>{{user.travelCountry}}</h2>
+{{!--     <br>
+   		<div class="wrap">
+   		{{#each user.pins}}
+   		<a href="/users/{{../user.id}}/pins/{{this.id}}">
+   			<div class="pinBox">
+     			<div class="innerContent">
+        			{{this.title}}
+        			{{this.imgUrl}}
+   			    </div>
+    		</div>
+    	</a>
+    	</div>
 
-<a href="/users/new">Add New User</a>
-
+    	{{/each}}
+ --}}

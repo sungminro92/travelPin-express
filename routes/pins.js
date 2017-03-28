@@ -1,12 +1,24 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
-var User = require('../models/userModel.js');
+var Users = require('../models/userModel.js');
 var Pin = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
-// GET ROUTE FOR VIEWING DETAILS OF EACH TRACK
-router.get('user/:userId/pins/:id', function showTrackDetail(req, res) {
- 	 User.findById(req.params.userId)
+// GET ROUTE FOR USER'S PIN INDEX (USER ALBUM) PAGE
+router.get('/:id/pins', function(req, res) {
+  Users.findById(req.params.id)
+  .exec(function(err, user) {
+    if (err) console.log(err);
+    res.render('pins/index', {
+      user: user,
+      pins: user.pins
+    });
+  });
+});
+
+// GET ROUTE FOR VIEWING DETAILS OF EACH PIN
+router.get('user/:userId/pins/:id', function showPinDetail(req, res) {
+ 	 Users.findById(req.params.userId)
   	.exec(function(err, user) {
     	if (err) console.log(err);
     	const pinDetail = user.pins.id(req.params.id);
@@ -19,7 +31,7 @@ router.get('user/:userId/pins/:id', function showTrackDetail(req, res) {
 });
 
 router.get('user/:userId/pins/:id/edit', function editProjectIdea(req, res) {
-  User.findById(req.params.userId)
+  Users.findById(req.params.userId)
     .exec(function (err, user){
       if (err) { console.log(err); }
       const pinDetail = user.pins.id(req.params.id);
