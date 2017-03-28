@@ -3,34 +3,52 @@ mongoose.connect('mongodb://localhost/myTrack')
 var Track = require("./models/trackModel.js");
 
 mongoose.promise = global.Promise;
+var mongoose = require('mongoose');
+mongoose.disconnect();
+mongoose.connect('mongodb://localhost/myTrack');
+var Track = require("../models/trackModel.js");
 
-// var a = new User({
-// 	username: a,
-// 	email: a@gmail.com,
-// 	password: a,
-// 	travelCountry: New York,
-// })
+// Use native promises
+mongoose.Promise = global.Promise;
 
-// var trackOne = new Track({
-// 	title: "Sungmin's House",
-// 	location: '4142 24th st, Long Island City, New York, 11101',
-// 	imgUrl: '#'
-// });
+// First we clear the database of existing users and items.
+Track.remove({}, function(err){
+  console.log(err);
+});
 
+// create new track
+var trackOne = new Track({
+	title: "Pikachu1",
+	location: 'Kanto',
+	imgUrl: 'http://media.comicbook.com/2016/07/sadpikachu-189263.png'
+});
 
-// var UserSchema = new Schema({
-//   username: String,
-//   email: String,
-//   password: String,
-//   travelCountry: String,
-//   created_at: Date, 
-//   updated_at: Date,
-//   tracks: [TrackSchema]
-// });
-// var TrackSchema = new Schema({
-//   title: String,
-//   location: String,
-//   created_at: Date,
-//   updated_at: Date,
-//   imgUrl: String
-// });
+var trackTwo = new Track({
+	title: "Pikachu2",
+	location: 'Johto',
+	imgUrl: 'http://media.comicbook.com/2016/07/sadpikachu-189263.png'
+});
+
+var trackThree = new Track({
+	title: "Pikachu3",
+	location: 'Hoenn',
+	imgUrl: 'http://media.comicbook.com/2016/07/sadpikachu-189263.png'
+});
+
+// save the users
+trackOne.save(function(err) {
+  if (err) console.log(err);
+  console.log('Track created!');
+});
+
+trackTwo.save(function(err) {
+  if (err) console.log(err);
+  console.log('Track created!');
+});
+
+trackThree.save(function(err) {
+  if (err) console.log(err);
+  console.log('Track created!');
+});
+
+mongoose.connection.close();

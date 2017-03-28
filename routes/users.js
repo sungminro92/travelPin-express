@@ -5,7 +5,9 @@ var Track = require('../models/trackModel.js');
 var authHelpers = require('../helper/auth.js');
 
 /* GET users listing. */
-router.get('/:id', function(req, res, next) {
+// ROUTE FOR USER PROFILE PAGE
+
+router.get('/:id', authHelpers.authorized, function(req, res) {
 	User.findById(req.params.id)
 	.exec(function(err, user) {
 	  if (err) console.log(err);
@@ -13,12 +15,11 @@ router.get('/:id', function(req, res, next) {
 	  res.render('user/index', {
 	  	user: user,
 	  	tracks: user.tracks
-	  })
+	  });
 	});
 });
 
-
-// EDIT USER ROUTE
+// EDIT USER ROUTE + RENDER TO EDIT PAGE
 router.get('/:id/edit', function(req, res) {
  	 User.findById(req.params.id)
   	.exec(function(err, user) {
@@ -29,7 +30,7 @@ router.get('/:id/edit', function(req, res) {
   	});
 });
 
-// USER UPDATE ROUTE
+// USER UPDATE ROUTE + RENDER BACK TO INDEX PAGE
 router.put('/:id', function(req, res){
   User.findByIdAndUpdate(req.params.id, {
     username: req.body.username,
@@ -100,21 +101,23 @@ router.get('/:userId/tracks/:id', function showTrackDetail(req, res) {
   	});
 });
 
+//SHOW: create a GET "/:id" route that shows the page ONLY IF it's the current user's session. Else, redirect to an error page that says "Oops! You are not authorized."
+
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){
-	var user = new User({  // TO-DO: handle duplicate email/id
-		email: req.body.email,
-	  username: req.body.username,
-	  password: res.hashedPassword,
-	  travelCountry: req.body.travelCountry
-	});
-
-	user.save(function(err, user){
+	Track.find({},function (err, tracks) {
+ 		var user = new User({  // TO-DO: handle duplicate email/id
+			email: req.body.email,
+		  username: req.body.username,
+		  password: res.hashedPassword,
+		  travelCountry: req.body.travelCountry,
+		  tracks: tracks
+		});
+		user.save(function(err, user){
 		if (err) console.log(err);
-		//console.log(user);
 		res.redirect('/user/' + user.id);
+		});
 	});
-
 });
 
 module.exports = router;

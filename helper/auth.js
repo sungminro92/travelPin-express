@@ -28,7 +28,7 @@ function loginUser(req, res, next) {
   });
 }
 
-function authorize(req, res, next) {
+function authorized(req, res, next) {
   var currentUser = req.session.currentUser
   // THIS ASSUMES THAT EVERY :id refers to the user _id
   // needs to check if the current user doesn't exist, if it does then make
@@ -47,5 +47,5 @@ function authorize(req, res, next) {
 module.exports = {
   createSecure: createSecure,
   loginUser: loginUser,
-  authorize: authorize
+  authorized: authorized
 }
