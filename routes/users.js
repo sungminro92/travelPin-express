@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
 var User = require('../models/userModel.js');
-var Track = require('../models/pinModel.js');
+var Pin = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
 /* GET users listing. */
 // ROUTE FOR USER PROFILE PAGE
-
-router.get('/:id', authHelpers.authorized, function(req, res) {
+router.get('/:id', function(req, res) {
 	User.findById(req.params.id)
 	.exec(function(err, user) {
 	  if (err) console.log(err);
@@ -105,7 +104,7 @@ router.get('/:userId/pins/:id', function showTrackDetail(req, res) {
 
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){
-	Track.find({},function (err, pins) {
+	Pin.find({},function (err, pins) {
  		var user = new User({  // TO-DO: handle duplicate email/id
 			email: req.body.email,
 		  username: req.body.username,

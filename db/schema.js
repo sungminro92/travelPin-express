@@ -40,7 +40,7 @@ UserSchema.pre('save', function(next){
 });
 
 var UserModel = mongoose.model("User", UserSchema);
-var PinkModel = mongoose.model("Pin", PinSchema);
+var PinModel = mongoose.model("Pin", PinSchema);
 
 module.exports = {
   User: UserModel,

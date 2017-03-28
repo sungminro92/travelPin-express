@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/myTrack');
 
 var index = require('./routes/index.js'); // require index
 var users = require('./routes/users.js'); // require users
-var tracks = require('./routes/tracks.js'); // require tracks
+var pins = require('./routes/pins.js'); // require pins
 var sessions = require('./routes/sessions.js'); // require sessions
 
 var app = express();
@@ -40,7 +40,7 @@ app.use(session({
 
 app.use('/', index); // use index controllers
 app.use('/user', users); //use users controllers
-app.use('/user/tracks', tracks); //use tracks controllers
+app.use('/user/pins', pins); //use pins controllers
 app.use('/sessions', sessions) // use session controllers
 
 // catch 404 and forward to error handler

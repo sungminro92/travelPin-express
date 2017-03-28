@@ -14,14 +14,14 @@
     <br>
     <br>
     <!-- PUT IMG URL AS BACKGROUND TO DIVS -->
-    <h3>My Tracks:</h3><a class="addCllick" href="/user/{{user.id}}/new">Add New Track</a>
+    <h3>My Pins:</h3><a class="addCllick" href="/user/{{user.id}}/new">Add New Pin</a>
     <br>
     <br>
-    <div class="trackBoxHolder">
-        {{#each tracks}}
+    <div class="pinBoxHolder">
+        {{#each pins}}
         <!-- {{user.id}} isn't finding user.id number -->
-        <a href="/user/{{../user.id}}/tracks/{{this.id}}">
-            <div class="trackBox">
+        <a href="/user/{{../user.id}}/pins/{{this.id}}">
+            <div class="pinBox">
                 <p>{{this.title}}</p>
             </div>
         </a>
