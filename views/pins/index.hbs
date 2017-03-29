@@ -1,17 +1,14 @@
+<a href="/user/{{user.id}}">Back to Profile</a>
 <h1> MY ALBUM </h1>
 <h2>{{user.travelCountry}}</h2>
-{{!--     <br>
-   		<div class="wrap">
-   		{{#each user.pins}}
-   		<a href="/users/{{../user.id}}/pins/{{this.id}}">
-   			<div class="pinBox">
-     			<div class="innerContent">
-        			{{this.title}}
-        			{{this.imgUrl}}
-   			    </div>
-    		</div>
-    	</a>
-    	</div>
+    <br>
+   {{!-- 	<div id="wrap"> --}}
+	{{#each pins}}
+		<a href="/user/{{../user.id}}/pins/{{this.id}}">
+			<div class="pinBox">
+ 			<div class="pinContent">
+			    </div>
+		</div>
+	</a>
+	{{/each}}
 
-    	{{/each}}
- --}}

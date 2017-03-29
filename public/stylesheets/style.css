@@ -1,3 +1,23 @@
+html, body{
+	height: 100%;
+	margin: 0 auto;
+}
+
+body {
+	height: 100%;
+	background-image: url("http://i.imgur.com/MtYr8P7.jpg");
+	background-size: cover;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* INDEX PAGE = WELCOME PAGE*/
+.indexPage {
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 75px;
+}
+
 .headline {
 	font-family: 'Pacifico', cursive;
 	font-weight: bold;
@@ -9,22 +29,28 @@
 	font-size: 18px;
 }
 
-body {
-text-align: center;
-padding: 50px;
-font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 li {
 	list-style: none;
 }
 
-nav li {
+nav p {
   display: inline-block;
 }
 
 nav form {
   display: inline;
+}
+
+/* SIGNUP PAGE*/
+.formdiv {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group {
+	display: flex;
+	justify-content: center;
+	align-content: space-between;
 }
 
 .userProfile {
@@ -38,29 +64,29 @@ nav form {
 	background-color: yellow;
 }
 
-#rwrap {
-	overflow: hidden;
-}
+/* MY PIN ALBUM PAGE*/
+
 
 div.pinBox {
-	width: 20%;
-	padding-bottom: 20%;
-	color: yellow;
+	width: 25%;
+	padding-bottom: 25%;
+	background-color: yellow;
 	position: relative;
 	float: left;
 }
 
 div.pinContent {
 	position: absolute;
-	left: 1px;
-	right: 1px;
-	top: 1px;
-	bottom: 1px;
+	left: 3px;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
 	background: red;
 	padding: 10px;
 }
 
-/* TRACK DETAIL SHOW PAGE*/
+/* PIN DETAIL SHOW PAGE*/
+
 .pinImage {
 	background-color: yellow;
 	width: 75%;

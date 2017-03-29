@@ -40,7 +40,7 @@ app.use(session({
 
 app.use('/', index); // use index controllers
 app.use('/user', users); //use users controllers
-app.use('/user/pins', pins); //use pins controllers
+app.use('/user/:userId/pins', pins); //use pins controllers
 app.use('/sessions', sessions) // use session controllers
 
 // catch 404 and forward to error handler

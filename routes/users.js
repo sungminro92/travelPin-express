@@ -18,7 +18,6 @@ router.get('/:id', function(req, res) {
 	});
 });
 
-
 // GET ROUTE FOR OTHER USERS' PIN INDEX PAGE
 router.get('/pins', function(req, res) {
 	Users.find({})
@@ -30,6 +29,7 @@ router.get('/pins', function(req, res) {
 		})
 	})
 })
+
 
 // EDIT USER ROUTE + RENDER TO EDIT PAGE
 router.get('/:id/edit', function(req, res) {
@@ -57,63 +57,6 @@ router.put('/:id', function(req, res){
     });
   });
 });
-
-
-// CREATE A NEW TRACK on user/index.hbs.
-// ROUTE TO VIEW new.hbs
-router.get('/:id/new', function(req, res){
-	Users.findById(req.params.id)
-	.exec(function(err, user){
-		console.log(user.id)
-		console.log(user.pins)
-		res.render('pins/new.hbs', {
-			user: user,
-			pins: user.pins
-		});
-	});
-});                                                                                                                                                                                                                                                                                                                                                                                                                       
-
-
-// CREATE A NEW TRACK ROUTE
-router.post('/:id', function(req, res){
-	Users.findById(req.params.id)
-	.exec(function(err, user){
-		user.pins.push(new Track({
-			title: req.body.title,
-			location: req.body.location,
-			imgUrl: req.body.imgUrl
-		}));
-		
-		user.save(function(err){
-			if(err) console.log(err);
-			console.log('New Track created');
-			res.redirect('/user/' + user.id);
-		});
-	});
-});
-
-// // DELETE A TRACK ROUTE
-// router.delete('/:id', function(req, res){
-// 	User.findById(req.params.id)
-// 	.exec(function(err, user){
-// 		user.pins.
-// 	})
-// }
-
-router.get('/:userId/pins/:id', function showTrackDetail(req, res) {
- 	 Users.findById(req.params.userId)
-  	.exec(function(err, user) {
-    	if (err) console.log(err);
-    	const pinDetail = user.pins.id(req.params.id);
-    	console.log(user)
-    	res.render('pins/show.hbs', {
-      		user: user,
-      		pin: pinDetail
-   		 });
-  	});
-});
-
-//SHOW: create a GET "/:id" route that shows the page ONLY IF it's the current user's session. Else, redirect to an error page that says "Oops! You are not authorized."
 
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){

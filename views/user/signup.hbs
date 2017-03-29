@@ -1,31 +1,27 @@
-<form action="/user" method="post">
-  <div>
-    <label for="email">email</label>
-    <input type="text" name="email">
-  </div>
-  <div>
-  	<label for="username">Name</label>
-  	<input type="text" name="username">
-  </div>
-  <div>
-    <label for="password">password</label>
-    <input type="password" name="password">
-  </div>
-  <div>
-    <label for="travelCountry">Where are you traveling to?</label>
-    <input type="text" name="travelCountry">
-  </div>
 
-  <input type="submit" value="Sign up">
-
-  <nav>
-    <ul>
-      <li class="nav">
-        <a href="/">Return Home</a>
-      </li>
-    </ul>
-  </nav>
-
-</form>
-
+  <div = "signup">
+  <form class="formdiv" action="/user" method="post">
+    <div class="form-group">
+      <label for="email">email</label>
+      <input type="text" name="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+    	<label for="username">Name</label>
+    	<input type="text" name="username" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="password">password</label>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="travelCountry">Where are you traveling to?</label><br>
+      <input type="text" name="travelCountry" placeholder="City or Country Name">
+    <div class="form-group">  
+      <input type="submit" value="Sign up">
+    </div>
+    <div>
+      <a href="/">Return Home</a>
+    </div>
+  </form>
+  </div>
 

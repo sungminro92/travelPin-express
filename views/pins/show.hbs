@@ -3,7 +3,7 @@
 <div class="pinDetail">
   
     <div class="editDeleteBtn">
-      <form action="/user/{{user.id}}/pins/{{pin.id}}/edit">
+      <form action="/user/{{../user.id}}/pins/{{pin.id}}/edit">
         <button class="editDelete" type="submit" value="Edit">Edit pin</button>
       </form>
       <form action="/user/{{../user.id}}/pins/{{pin.id}}?_method=DELETE" method="POST">
