@@ -17,6 +17,19 @@ router.get('/', function(req, res) {
   });
 });
 
+// GET ROUTE FOR VIEWING DETAILS OF EACH PIN
+router.get('/:id', function showPinDetail(req, res) {
+   Users.findById(req.params.userId)
+    .exec(function(err, user) {
+      if (err) console.log(err);
+      const pinDetail = user.pins.id(req.params.id);
+      res.render('pins/show.hbs', {
+          user: user,
+          pin: pinDetail
+       });
+    });
+});
+
 // GET ROUTE & RENDER TO edit.hbs PAGE
 router.get('/:id/edit', function editPinDetail(req, res) {
   Users.findById(req.params.userId)
@@ -55,7 +68,6 @@ router.put('/:id', function updatePinDetail(req, res){
     });
 });
 
-
 // GET ROUTE & RENDER TO new.hbs PAGE!
 router.get('/new', function(req, res) {
   Users.findById(req.params.userId)
@@ -87,41 +99,21 @@ router.post('/', function createNewPin(req, res) {
     });
   });
 
-
-// GET ROUTE FOR VIEWING DETAILS OF EACH PIN
-router.get('/:id', function showPinDetail(req, res) {
- 	 Users.findById(req.params.userId)
-  	.exec(function(err, user) {
-    	if (err) console.log(err);
-    	const pinDetail = user.pins.id(req.params.id);
-      console.log(pin.id)
-    	res.render('pins/show.hbs', {
-      		user: user,
-      		pin: pinDetail
-   		 });
-  	});
-});
-
-
-// UPDATE
-
-
-
-// USER UPDATE ROUTE
-router.put('/:id', function(req, res){
-  User.findByIdAndUpdate(req.params.id, {
-    username: req.body.username,
-    email: req.body.email,
-    travelCountry: req.body.travelCountry
-  }, { new: true }) // new info
-  .exec(function(err, user){
-    if (err) { console.log(err); }
-    console.log(user);
-    res.render('user/index.hbs', {
-      user: user
-    });
-  });
-});
+// // USER UPDATE ROUTE
+// router.put('/:id', function(req, res){
+//   User.findByIdAndUpdate(req.params.id, {
+//     username: req.body.username,
+//     email: req.body.email,
+//     travelCountry: req.body.travelCountry
+//   }, { new: true }) // new info
+//   .exec(function(err, user){
+//     if (err) { console.log(err); }
+//     console.log(user);
+//     res.render('user/index.hbs', {
+//       user: user
+//     });
+//   });
+// });
 
 
 module.exports = router;

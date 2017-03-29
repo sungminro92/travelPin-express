@@ -4,6 +4,18 @@ var Users = require('../models/userModel.js');
 var Pin = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
+// GET ROUTE FOR OTHER USERS' PIN INDEX PAGE
+router.get('/pins', function(req, res) {
+	Users.find({})
+	.exec(function(err, user) {
+		if (err) console.log(err);
+		res.render('user/show.hbs', {
+			users: user,
+			pins: user.pins
+		});
+	});
+});
+
 /* GET users listing. */
 // ROUTE FOR USER PROFILE PAGE
 router.get('/:id', function(req, res) {
@@ -17,18 +29,6 @@ router.get('/:id', function(req, res) {
 	  	});
 	});
 });
-
-// GET ROUTE FOR OTHER USERS' PIN INDEX PAGE
-router.get('/pins', function(req, res) {
-	Users.find({})
-	.exec(function(err, user) {
-		if (err) console.log(err);
-		res.render('user/show.hbs', {
-			users: user,
-			pins: user.pins
-		})
-	})
-})
 
 
 // EDIT USER ROUTE + RENDER TO EDIT PAGE

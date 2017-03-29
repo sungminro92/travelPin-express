@@ -8,8 +8,9 @@ body {
 	background-image: url("http://i.imgur.com/MtYr8P7.jpg");
 	background-size: cover;
 	margin: 0 auto;
-	text-align: center;
+	
 }
+
 
 /* INDEX PAGE = WELCOME PAGE*/
 .indexPage {
@@ -33,8 +34,10 @@ li {
 	list-style: none;
 }
 
-nav p {
+.navi {
   display: inline-block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
 }
 
 nav form {
@@ -42,16 +45,37 @@ nav form {
 }
 
 /* SIGNUP PAGE*/
-.formdiv {
+.signupPage {
+	font-family: 'Work Sans', sans-serif;
+  	font-size: 15px;
 	display: flex;
-	flex-direction: column;
+	background-color: white;
+	width: 350px;
+	height: 400px;
+	margin: 0 auto;
+	padding-top: 30px;
+	border-radius: 5px;
 }
 
 .form-group {
-	display: flex;
-	justify-content: center;
-	align-content: space-between;
+	padding-left: 25px;
 }
+.form-control {
+	width: 300px;
+}
+
+/* SIGNIN PAGE*/
+.signinPage {
+	font-family: 'Work Sans', sans-serif;
+  	font-size: 15px;
+	display: flex;
+	background-color: white;
+	width: 350px;
+	height: 300px;
+	margin: 0 auto;
+	padding-top: 30px;
+	border-radius: 5px;
+
 
 .userProfile {
 	font-family: 'Work Sans', sans-serif;
