@@ -7,7 +7,7 @@ function createSecure(req, res, next) {
   var password = req.body.password;
   res.hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   next();
-};
+}
 
 // ('sessions/login')
 function loginUser(req, res, next) {
@@ -42,7 +42,7 @@ function authorized(req, res, next) {
   } else {
     next();
   };
-};
+}
 
 
 module.exports = {

@@ -7,14 +7,13 @@ var authHelpers = require('../helper/auth.js');
 // GET ROUTE FOR OTHER USERS' PIN INDEX PAGE
 router.get('/pins', function(req, res) {
 	Users.find({})
-	.exec(function(err, user) {
+	.exec(function(err, users) {
 		if (err) console.log(err);
 		res.render('user/show.hbs', {
-			users: user,
-			pins: user.pins
-		});
-	});
-});
+			users: users
+		})
+	})
+})
 
 /* GET users listing. */
 // ROUTE FOR USER PROFILE PAGE
@@ -29,7 +28,6 @@ router.get('/:id', function(req, res) {
 	  	});
 	});
 });
-
 
 // EDIT USER ROUTE + RENDER TO EDIT PAGE
 router.get('/:id/edit', function(req, res) {
@@ -61,12 +59,12 @@ router.put('/:id', function(req, res){
 // REGISTRATION
 router.post('/', authHelpers.createSecure, function(req, res){
 	Pin.find({},function (err, pins) {
- 		var user = new User({  // TO-DO: handle duplicate email/id
-			email: req.body.email,
-		  username: req.body.username,
-		  password: res.hashedPassword,
-		  travelCountry: req.body.travelCountry,
-		  pins: pins
+ 		var user = new Users({  // TO-DO: handle duplicate email/id
+ 			email: req.body.email,
+ 			username: req.body.username,
+			password: res.hashedPassword,
+			travelCountry: req.body.travelCountry,
+			pins: pins
 		});
 		user.save(function(err, user){
 		if (err) console.log(err);

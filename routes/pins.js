@@ -99,21 +99,40 @@ router.post('/', function createNewPin(req, res) {
     });
   });
 
-// // USER UPDATE ROUTE
-// router.put('/:id', function(req, res){
-//   User.findByIdAndUpdate(req.params.id, {
-//     username: req.body.username,
-//     email: req.body.email,
-//     travelCountry: req.body.travelCountry
-//   }, { new: true }) // new info
-//   .exec(function(err, user){
-//     if (err) { console.log(err); }
-//     console.log(user);
-//     res.render('user/index.hbs', {
-//       user: user
-//     });
-//   });
-// });
+
+// GET ROUTE FOR VIEWING DETAILS OF EACH PIN
+router.get('/:id', function showPinDetail(req, res) {
+ 	 Users.findById(req.params.userId)
+  	.exec(function(err, user) {
+    	if (err) console.log(err);
+    	const pinDetail = user.pins.id(req.params.id);
+    	res.render('pins/show.hbs', {
+      		user: user,
+      		pin: pinDetail
+   		 });
+  	});
+});
+
+
+// UPDATE
+
+
+
+// USER UPDATE ROUTE
+router.put('/:id', function(req, res){
+  User.findByIdAndUpdate(req.params.id, {
+    username: req.body.username,
+    email: req.body.email,
+    travelCountry: req.body.travelCountry
+  }, { new: true }) // new info
+  .exec(function(err, user){
+    if (err) { console.log(err); }
+    console.log(user);
+    res.render('user/index.hbs', {
+      user: user
+    });
+  });
+});
 
 
 module.exports = router;

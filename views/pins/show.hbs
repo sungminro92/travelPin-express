@@ -1,7 +1,8 @@
 <h1> {{pin.title}} </h1>
-<div class="pinImage"></div>
-<div class="pinDetail">
-  
+<div class="pinImage">
+<img class="pinContent" src="{{pin.imgUrl}}"/>
+</div>
+<div class="pinDetail">  
     <div class="editDeleteBtn">
       <form action="/user/{{../user.id}}/pins/{{pin.id}}/edit">
         <button class="editDelete" type="submit" value="Edit">Edit pin</button>

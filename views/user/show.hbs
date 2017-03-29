@@ -1,13 +1,28 @@
-<h1> Other users' pins</h1>
+<h1> Explore The World</h1>
 {{#each users}}
-	<h2> {{users.travelCountry}} <h2>
-		<div id="wrap">
-   			{{!-- {{#each pins}}
-   			<div class="box">
-     			<div class="innerContent">
-        			{{this.imgUrl}}
-   			    </div>
-    		</div>
-    		{{/each}} --}}
-    	</div>
+<div class="wrap">
+  <h2>{{this.username}} <small>{{this.travelCountry}}</small></h2>
+
+<!--
+  <div class="scrollbar">
+    <div class="handle">
+      <div class="mousearea"></div>
+    </div>
+  </div> -->
+
+  <div class="frame basic">
+    <ul class="clearfix">
+      {{#each this.pins}}
+      <li>
+      <a href="/user/{{../this.id}}/pins/{{this.id}}">
+        <div class="pinBox">
+            <img class="pinContent" src="{{this.imgUrl}}"/>
+        </div>
+      </a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+
+</div>
 {{/each}}
