@@ -236,6 +236,25 @@ span {
 	font-size: 15px;
 	text-align: center;
 }
+/* EDIT MY PIN PAGE */
+.editPinPage {
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 75px;
+}
+
+.editPin {
+		text-align: center;
+	font-family: 'Work Sans', sans-serif;
+  	font-size: 15px;
+	display: flex;
+	background-color: white;
+	width: 350px;
+	height: 555px;
+	margin: 0 auto;
+	padding-top: 30px;
+	border-radius: 5px;
+}
 
 /* Example wrapper */
 
@@ -277,7 +296,6 @@ span {
   color: #fff;
   background: #a03232;
 }
-
 
 /* Scrollbar */
 

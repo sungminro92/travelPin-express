@@ -66,7 +66,7 @@ router.get('/:id', function showPinDetail(req, res) {
 router.get('/:id/edit', function editPinDetail(req, res) {
   Users.findById(req.params.userId)
     .exec(function (err, user){
-      if (err) { console.log(err); }
+      if (err) {console.log(err); }
       const pinDetail = user.pins.id(req.params.id);
       res.render('pins/edit.hbs', {
         user: user,

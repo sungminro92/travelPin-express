@@ -1,8 +1,8 @@
 <div class="showPinPage">
 	<a class="back" href="/user/{{user.id}}/pins"> < Back to Profile </a>
 	<br>
-	<a href="/user/{{../user.id}}/pins/{{pin.id}}/edit" class="btn btn-default" type="submit" value="Edit">Edit this Pin</a>
-	<form class="editDeleteBtn" action="/user/{{../user.id}}/pins/{{pin.id}}?_method=DELETE" method="POST">
+	<a href="/user/{{user.id}}/pins/{{pin.id}}/edit" class="btn btn-default" type="submit" value="Edit">Edit this Pin</a>
+	<form class="editDeleteBtn" action="/user/{{user.id}}/pins/{{pin.id}}?_method=DELETE" method="POST">
 	<a class="btn btn-default" type="submit" value="Delete">Delete this Pin</a>
 	</form>
 

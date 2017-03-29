@@ -1,26 +1,36 @@
-<h1>Edit {{user.username}}'s Track</h1>
+<div style="text-align:center" class="editPinPage"><h1>Edit {{user.username}}'s Pin</h1></div>
+<br>
+<div class="editPin">
 <form action="/user/{{../user.id}}/pins/{{pin.id}}?_method=PUT" method="POST">
-  <div>
-    <label for="title"> Title: </label>
-    <input type="text" name="title" value="{{pin.title}}"/>
+  <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="{{pin.title}}">
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" name="location" class="form-control" placeholder="{{pin.location}}">
+      </div>
+      <div class="form-group">
+        <label for="imgUrl">image Url:</label>
+        <input type="text" name="imgUrl" class="form-control" placeholder="{{pin.imgUrl}}">
+      </div>
+      <div class="form-group">
+        <label for="notes">Notes: </label>
+        <textarea class="form-control" row="3" name="notes" placeholder="{{pin.notes}}"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="liked">Liked?</label><br>
+        <input type="radio" value="true" name="liked"> Yes   
+        <input type="radio" value="false" name="liked"> No<br>
+      </div>
+      <div class="form-group">
+      <input style="margin-right:10px" type="submit" class="btn btn-default" value="Create New Pin">
+      </div>
+      <div class="form-group">
+        <a href="/user/{{user.id}}/pins">< Return to My Pins</a></p>
+      </div>
+      <div class="form-group">
+        <a href="/{{user.id}}">< Return to My Profile</a></p>
+      </div>
   </div>
-  <div>
-    <label for="location"> Lcation: </label>
-    <input type="text" name="location" value="{{pin.location}}">
-  </div>
-  <div>
-  	<label for="imageUpload"> Select image file to upload: </label>
-  	<input type="file" name="imageUrl" value="{{pin.imgUrl}}">
-  </div>
-  <div>
-    <input type="submit" value="Update User"/>
-  </div>
-</form>
-
-<nav>
-	<ul>
-    <li class="nav">
-      <a href="/{{../user.id}}">Return to Home</a>
-    </li>
-  </ul>
-</nav>
+</div>
