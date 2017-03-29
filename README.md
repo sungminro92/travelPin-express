@@ -10,11 +10,15 @@
 
 My application let users sign up & sign in for a personal account where users can collect images and informations about visitied places while they trave, rather than spending time on writing. Users are directly navigated to their account once they're logged in. They have access to their pin galleries. Once the user is inside pin gallery, he/she can add, edit and delete certain pin. Users can also view other users' pin albums but will not be able to new/edit/delete without being authorized.
 
+
 ## My project includes:
 1. HTML
 2. CSS
 3. JAVASCRIPT
-4. MEN STACK (Mongo DB, Express, Node)
+4. BOOTSTRAP
+5. GOOGLE FONTS & IMAGES
+6. MEN STACK (Mongo DB, Express, Node)
+
 
 ## Additional future plans:
 1. Using map locations
