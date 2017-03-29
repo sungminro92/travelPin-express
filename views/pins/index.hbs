@@ -1,10 +1,15 @@
-<div class="back"><a href="/user/{{user.id}}"> < Back to Profile</a></div>
+<div class="back">
+	<a href="/user/{{user.id}}"> < Back to Profile</a>
+</div>
+
 <div class="albumHeader">
 	{{user.travelCountry}}
 </div>
-<a class="viewMyPin" href="/user/{{user.id}}/pins/new">
-	<button style="float:right" type="button" class="btn btn-default">Add New Pin</button>
-</a>
+	<div>
+		<a class="viewMyPin" href="/user/{{user.id}}/pins/new">
+			<button style="float:right" type="button" class="btn btn-default">Add New Pin</button>
+		</a>
+	</div>
     <br>
     <br>
    {{!-- 	<div id="wrap"> --}}

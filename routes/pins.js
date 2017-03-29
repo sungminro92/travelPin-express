@@ -40,11 +40,11 @@ router.post('/', function createNewPin(req, res) {
         location: req.body.location,
         imgUrl: req.body.imgUrl,
       }
-      user.pins.push(newPin)
+      user.pins.push(newPin);
       user.save(function (err) {
         if(err) console.log(err);
         console.log('New Pin Created!');
-        res.redirect('/user/'+userId+'/pins')
+        res.redirect('/user/'+ req.params.userId +'/pins');
       });
     });
   });
@@ -78,7 +78,7 @@ router.get('/:id/edit', function editPinDetail(req, res) {
 // PUT ROUTE FOR UPDATE & RENDER BACK TO index.hbs PAGE!
 // USER UPDATE ROUTE
 router.put('/:id', function updatePinDetail(req, res){
-  User.findById(req.params.userId)
+  Users.findById(req.params.userId)
     .exec(function (err, user){
       if (err) { console.log(err); }
       const pin = user.pins.id(req.params.id);
@@ -86,9 +86,8 @@ router.put('/:id', function updatePinDetail(req, res){
       pin.title = req.body.title
       pin.location = req.body.location
       pin.imgUrl = req.body.imgUrl
-      liked = req.body.liked
-      title: req.body.title
-
+      pin.liked =req.body.liked
+      pin.title = req.body.title
       user.save();
 
       res.render('pins/show', {
