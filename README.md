@@ -1,11 +1,10 @@
 # WDI-9 PROJECT 1
-======
+
 ### TRELLO BOARD:
 [LINK TO MY TRELLO BOARD](https://trello.com/b/sZKDbp3K/wdi-project-2)
 
 ### HEROKU DEMO:
 [LINK TO MY HEROKU DEMO](https://aqueous-wave-49376.herokuapp.com/)
-======
 
 # TravelPIN 
 
