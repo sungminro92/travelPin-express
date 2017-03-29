@@ -86,18 +86,12 @@ router.put('/:id', function updatePinDetail(req, res){
       pin.title = req.body.title
       pin.location = req.body.location
       pin.imgUrl = req.body.imgUrl
-      pin.liked =req.body.liked
-      pin.title = req.body.title
+      pin.liked = req.body.liked
       user.save();
 
-      res.render('pins/show', {
-        user: user,
-        pins: user.pins
-      });
+      res.redirect('/user/'+req.params.userId+'/pins/'+req.params.id);
     });
 });
-
-
 
 
 // GET ROUTE FOR VIEWING DETAILS OF EACH PIN
@@ -113,26 +107,19 @@ router.get('/:id', function showPinDetail(req, res) {
   	});
 });
 
+// DELETE THIS PIN
+router.delete('/:id', function deleteThisPin(req, res) {
+  User.findById(req.params.userId)
+    .exec(function (err, user){
+      if (err) { console.log(err); }
 
-// UPDATE
-
-
-
-// USER UPDATE ROUTE
-router.put('/:id', function(req, res){
-  User.findByIdAndUpdate(req.params.id, {
-    username: req.body.username,
-    email: req.body.email,
-    travelCountry: req.body.travelCountry
-  }, { new: true }) // new info
-  .exec(function(err, user){
-    if (err) { console.log(err); }
-    console.log(user);
-    res.render('user/index.hbs', {
-      user: user
+      user.pins.id(req.params.id).remove();
+      user.save(function (err) {
+        if (err) console.log(err);
+        console.log('this Pin has been removed')
+      });
+      res.redirect('/user/'+req.params.userId+'/pins/'+req.params.id);
+      });
     });
-  });
-});
-
 
 module.exports = router;
