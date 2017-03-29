@@ -17,6 +17,38 @@ router.get('/', function(req, res) {
   });
 });
 
+// GET ROUTE & RENDER TO new.hbs PAGE!
+router.get('/new', function(req, res) {
+  Users.findById(req.params.userId)
+  .exec(function(err, user) {
+    if(err) console.log(err);
+    res.render('pins/new.hbs', {
+      user: user,
+      pins: user.pins
+    });
+  });
+});
+
+// POST ROUTE TO CREATE NEW PIN!
+router.post('/', function createNewPin(req, res) {
+  Users.findById(req.params.userId)
+    .exec(function (err, user) {
+      if (err) {console.log(err);
+      }
+      const newPin = {
+        title: req.body.title,
+        location: req.body.location,
+        imgUrl: req.body.imgUrl,
+      }
+      user.pins.push(newPin)
+      user.save(function (err) {
+        if(err) console.log(err);
+        console.log('New Pin Created!');
+        res.redirect('/user/'+userId+'/pins')
+      });
+    });
+  });
+
 // GET ROUTE FOR VIEWING DETAILS OF EACH PIN
 router.get('/:id', function showPinDetail(req, res) {
    Users.findById(req.params.userId)
@@ -36,14 +68,12 @@ router.get('/:id/edit', function editPinDetail(req, res) {
     .exec(function (err, user){
       if (err) { console.log(err); }
       const pinDetail = user.pins.id(req.params.id);
-
       res.render('pins/edit.hbs', {
         user: user,
-        pins: pinsDetail
+        pin: pinDetail
       });
     });
 });
-
 
 // PUT ROUTE FOR UPDATE & RENDER BACK TO index.hbs PAGE!
 // USER UPDATE ROUTE
@@ -68,36 +98,7 @@ router.put('/:id', function updatePinDetail(req, res){
     });
 });
 
-// GET ROUTE & RENDER TO new.hbs PAGE!
-router.get('/new', function(req, res) {
-  Users.findById(req.params.userId)
-  .exec(function(err, user) {
-    if(err) console.log(err);
-    res.render('pins/new.hbs', {
-      user: user
-    });
-  });
-});
 
-// POST ROUTE TO CREATE NEW PIN!
-router.post('/', function createNewPin(req, res) {
-  Users.findById(req.params.userId)
-    .exec(function (err, user) {
-      if (err) {console.log(err);
-      }
-      const newPin = {
-        title: req.body.title,
-        location: req.body.location,
-        imgUrl: req.body.imgUrl,
-        liked: req.body.liked
-      }
-      user.pins.push(newPin)
-      user.save(function (err) {
-        if(err) console.log(err);
-        console.log('New Pin Created!')
-      });
-    });
-  });
 
 
 // GET ROUTE FOR VIEWING DETAILS OF EACH PIN

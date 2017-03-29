@@ -10,21 +10,25 @@ router.get('/pins', function(req, res) {
 	.exec(function(err, users) {
 		if (err) console.log(err);
 		res.render('user/show.hbs', {
-			users: users
-		})
-	})
-})
-
+			users: users,
+			currentUserId: req.session.currentUserId
+		});
+	});
+});
 /* GET users listing. */
 // ROUTE FOR USER PROFILE PAGE
 router.get('/:id', function(req, res) {
+	console.log(req.session.currentUserId);
+	var isAdmin = req.session.currentUserId == req.params.id;
 	Users.findById(req.params.id)
 	.exec(function(err, user) {
 	  	if (err) console.log(err);
 	  	console.log(user);
 	  	res.render('user/index', {
 	  	user: user,
-	  	pins: user.pins
+	  	pins: user.pins,
+	  	currentUserId: req.session.currentUserId,
+	  	isAdmin: isAdmin
 	  	});
 	});
 });
@@ -35,7 +39,9 @@ router.get('/:id/edit', function(req, res) {
   	.exec(function(err, user) {
     	if (err) console.log(err);
     	res.render('user/edit.hbs', {
-      		user: user
+      		user: user,
+      		currentUserId: req.session.currentUserId
+
    		 });
   	});
 });
@@ -51,7 +57,8 @@ router.put('/:id', function(req, res){
     if (err) { console.log(err); }
     console.log(user);
     res.render('user/index.hbs', {
-      user: user
+      user: user,
+      currentUserId: req.session.currentUserId
     });
   });
 });
@@ -68,6 +75,7 @@ router.post('/', authHelpers.createSecure, function(req, res){
 		});
 		user.save(function(err, user){
 		if (err) console.log(err);
+		currentUserId: req.session.currentUserId
 		res.redirect('/user/' + user.id);
 		});
 	});

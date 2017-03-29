@@ -1,7 +1,11 @@
+
+<div class="explorePage">
 <h1> Explore The World</h1>
+</div>
 {{#each users}}
 <div class="wrap">
-  <h2>{{this.username}} <small>{{this.travelCountry}}</small></h2>
+  <h2 style="margin-left:15px" class="travelCountry">{{this.username}} <small>{{this.travelCountry}}</small></h2>
+  <br>
 
 <!--
   <div class="scrollbar">
@@ -16,7 +20,7 @@
       <li>
       <a href="/user/{{../this.id}}/pins/{{this.id}}">
         <div class="pinBox">
-            <img class="pinContent" src="{{this.imgUrl}}"/>
+            <img style="height:100%" class="pinContent" src="{{this.imgUrl}}"/>
         </div>
       </a>
       </li>

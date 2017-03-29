@@ -1,20 +1,39 @@
-<form method="post" action="/sessions?_method=DELETE">
-        <button class="logout">logout</button>
-    </form>
-
-<h1>{{user.username}}'s Profile</h1>
-    <p>Name: <a href="/user/{{user.id}}">{{user.username}}</a></p>
-    <p>Email: {{user.email}}</p>
-    <p>Traveling Country: {{user.travelCountry}}</p>
-    <p>Travel Start date: {{user.created_at}}</p>
-    <p>Latest update: {{user.updated_at}}</p>
+<div class="profilePage">
+<div class="userProfile">
     <a href="/user/{{user.id}}/edit">Edit Profile</a>
+    <h1>{{user.username}}'s Profile</h1>
+        
+        {{!-- {{#if currentUserId}} --}}
+            {{!-- <a href="/user/{{user.id}}/edit">Edit Profile</a> --}}
+        {{!-- {{/if}} --}}
 
-    <br>
-    <br>
-    <br>
-    <!-- PUT IMG URL AS BACKGROUND TO DIVS -->
-    <a class="viewMyPin" href="/user/{{user.id}}/pins">View my pins</a>
-    <br>
-    <a class="exploreOthers" href="/user/pins">Explore the World</a>
+        <p>Name: <span>{{user.username}}</span></p>
+        <p>Email: <span>{{user.email}}</span></p>
+        <p>Traveling Country: <span>{{user.travelCountry}}</span></p>
+        <p>Travel Start Date: <span>{{user.created_at}}</span></p>
+        <p>Latest Update: <span>{{user.updated_at}}</span></p>
+        <br>
     
+        {{#if isAdmin}}
+        <a class="viewMyPin" href="/user/{{user.id}}/pins">
+            <button type="button" class="btn btn-default" style="right:10px">View my pins</button>
+        </a>
+
+        {{else}}
+        <a class="viewMyPin" href="/user/{{user.id}}/pins">
+            <button type="button" class="btn btn-default" style="right:10px">View {{ user.username}}'s Pins ></button>
+        </a>
+
+        {{/if}}
+        <a class="exploreOthers" href="/user/pins">
+            <button type="button" class="btn btn-default">Explore the World ></button>
+        </a>
+</div>
+<br>
+<form method="post" action="/sessions?_method=DELETE">
+        <button class="btn btn-default"> logout </button>
+</form>
+<br>
+<br>
+<br>
+</div>

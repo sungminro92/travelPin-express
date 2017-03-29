@@ -33,3 +33,14 @@ jQuery(function($) {
   }());
 
 });
+$(document).ready(function() {
+  $('.box').hover(function () {
+    $(this).append('<div id="mouseover">')
+    $("#mouseover").css({"height":"100%", "width":"100%", "background-color":"black", "opacity":"0.5"});
+  });
+});
+
+
+
+
+

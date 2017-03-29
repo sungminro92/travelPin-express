@@ -1,15 +1,33 @@
-<h1> {{pin.title}} </h1>
-<div class="pinImage">
-<img class="pinContent" src="{{pin.imgUrl}}"/>
-</div>
-<div class="pinDetail">  
-    <div class="editDeleteBtn">
-      <form action="/user/{{../user.id}}/pins/{{pin.id}}/edit">
-        <button class="editDelete" type="submit" value="Edit">Edit pin</button>
-      </form>
-      <form action="/user/{{../user.id}}/pins/{{pin.id}}?_method=DELETE" method="POST">
-        <button class="editDelete" type="submit" value="Delete">Delete pin</button>
-      </form>
-    </div>
+<div class="showPinPage">
+	<a class="back" href="/user/{{user.id}}/pins"> < Back to Profile </a>
+	<br>
+	<a href="/user/{{../user.id}}/pins/{{pin.id}}/edit" class="btn btn-default" type="submit" value="Edit">Edit this Pin</a>
+	<form class="editDeleteBtn" action="/user/{{../user.id}}/pins/{{pin.id}}?_method=DELETE" method="POST">
+	<a class="btn btn-default" type="submit" value="Delete">Delete this Pin</a>
+	</form>
 
+	<br>
+	<br>
+	<div class="pinTitle"> 
+		{{pin.title}}
+	</div>
+	<div id="wrap">
+		<div class="imageContainer">
+			<img class="image" src="{{pin.imgUrl}}" style="width:100%">
+		
+			</div>
+
+		<div class="pinDetail">
+			<br>
+			<p>Title: <span>{{pin.title}}</span></p>
+        	<p>Location: <span>{{pin.location}}</span></p>
+        	<p>Pin Created: <span>{{pin.created_at}}</span></p>
+        	<p>Pin Updated: <span>{{pin.updated_at}}</span></p>
+        	<p>Liked? <span>{{pin.Liked}}</span></p>
+        	<p>Notes: <span>{{pin.notes}}</span></p>
+        	<br> 
+		    <br>
+	  		</form>
+    	</div>
+	</div>
 </div>

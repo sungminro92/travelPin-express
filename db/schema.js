@@ -7,7 +7,8 @@ var PinSchema = new Schema({
   created_at: Date,
   updated_at: Date,
   imgUrl: String,
-  Liked: Boolean
+  Liked: Boolean,
+  notes: String
 });
 
 PinSchema.pre('save', function(next) {
