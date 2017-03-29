@@ -107,19 +107,23 @@ router.get('/:id', function showPinDetail(req, res) {
   	});
 });
 
-// DELETE THIS PIN
-router.delete('/:id', function deleteThisPin(req, res) {
-  User.findById(req.params.userId)
-    .exec(function (err, user){
-      if (err) { console.log(err); }
+// // DELETE THIS PIN
+// router.delete('/:id', function deleteThisPin(req, res) {
+//   User.findByIdAndUpdate(req.params.userId, {
+//     $pull:{
+//       pins: {_id: req.params.id}
+//     }
+//   })
+//     .exec(function (err, user) {
+//       if (err) { console.log(err); }
+//     });
+//   Pins.findByIdAndRemove(req.params.id)
+//     .exec(function(err, pin) {
+//       if (err) {console.log(err);}
+//       console.log(pin);
+//       res.redirect('/user/'+req.params.userId+'/pins/'+req.params.id);
+//     });
+// });
 
-      user.pins.id(req.params.id).remove();
-      user.save(function (err) {
-        if (err) console.log(err);
-        console.log('this Pin has been removed')
-      });
-      res.redirect('/user/'+req.params.userId+'/pins/'+req.params.id);
-      });
-    });
 
 module.exports = router;

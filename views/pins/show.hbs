@@ -1,9 +1,11 @@
 <div class="showPinPage">
 	<a class="back" href="/user/{{user.id}}/pins"> < Back to Profile </a>
 	<br>
-	<a href="/user/{{user.id}}/pins/{{pin.id}}/edit" class="btn btn-default" type="submit" value="Edit">Edit this Pin</a>
+	<br>
+	<br>
+	<a href="/user/{{user.id}}/pins/{{pin.id}}/edit"><button class="btn btn-default" type="submit" value="Edit">Edit this Pin</button></a>
 	<form action="/user/{{user.id}}/pins/{{pins.id}}?_method=DELETE" method="POST">
-	<a class="btn btn-default" type="submit" value="Delete this pin">Delete this Pin</a>
+	<button class="btn btn-default" type="submit" value="Delete this pin">Delete this Pin</button>
 	</form>
 
 	<br>
@@ -18,6 +20,7 @@
 			</div>
 
 		<div class="pinDetail">
+			<br>
 			<br>
 			<p>Title: <span>{{pin.title}}</span></p>
         	<p>Location: <span>{{pin.location}}</span></p>
