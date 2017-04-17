@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/myTrack')
+mongoose.connect('mongodb://localhost/travelPin')
 var Pin = require("../models/pinModel.js");
 
 mongoose.promise = global.Promise;

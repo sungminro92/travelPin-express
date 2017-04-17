@@ -15,8 +15,7 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhopst:27017/travelPin'
-mongoose.connect(mongoURI);
+c
 /**
  * Create HTTP server.
  */

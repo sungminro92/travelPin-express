@@ -12,24 +12,27 @@ var db = require('./db.js');
 var dotenv = require('dotenv');
 dotenv.config();
 
-// Connect to database
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-}
-else {
-  mongoose.connect('mongodb://localhost/travelPin');
-}
-mongoose.connection.on('error', function(err) {
-  console.error('MongoDB connection error: ' + err);
-  process.exit(-1);
-  }
-);
-mongoose.connection.once('open', function() {
-  console.log("Mongoose has connected to MongoDB!");
-});
+// // Connect to database
+// if (process.env.MONGODB_URI) {
+//   mongoose.connect(process.env.MONGODB_URI);
+// }
+// else {
+//   mongoose.connect('mongodb://localhost/travelPin');
+// }
+// mongoose.connection.on('error', function(err) {
+//   console.error('MongoDB connection error: ' + err);
+//   process.exit(-1);
+//   }
+// );
+// mongoose.connection.once('open', function() {
+//   console.log("Mongoose has connected to MongoDB!");
+// });
 
 // // mongoose.connect('mongodb://localhost/myTrack');
+mongoose.connect('mongodb://localhost/travelPin');
 
+var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/travelPin';
+mongoose.connect(mongoURI);
 // var mongoURI = process.env.MONGODB_URI || 'mongodb://localhopst:27017/travelPin'
 // mongoose.connect(mongoURI);
 
