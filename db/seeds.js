@@ -14,7 +14,7 @@ User.remove({}), function(err){
 	console.log(err);
 }
 Pin.remove({}, function(err){
-  console.log(err);
+  	console.log(err);
 });
 
 var Sungmin = new User({
@@ -41,7 +41,7 @@ var pinOne = new Pin({
 	title: "New York Bull",
 	location: 'Broadway & Morris St, New York',
 	imgUrl: 'http://i.imgur.com/aCEcJys.jpg?1',
-	liked: True,
+	liked: true,
 	notes: 'I thought it was funny the most touched area.'
 
 var pinTwo = new Pin({
@@ -101,8 +101,8 @@ var pinNine = new Pin({
 
 // SAVE TO USERS
 
-var users= [Sungmin, Ryan, Jesse];
-var pins= [pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix, pinSeven, pinEight, pinNine];
+var users = [Sungmin, Ryan, Jesse];
+var pins = [pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix, pinSeven, pinEight, pinNine];
 
 pins.forEach(function(pins, i){
 	pins.save(function(err) {

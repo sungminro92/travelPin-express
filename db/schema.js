@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema; // define mongoose Schema
+var Schema   = mongoose.Schema; // define mongoose Schema
 
 var PinSchema = new Schema({
   title: String,
@@ -22,7 +22,7 @@ PinSchema.pre('save', function(next) {
 
 var UserSchema = new Schema({
   username: String,
-  email: String,
+  email   : String,
   password: String,
   travelCountry: String,
   created_at: Date, 
@@ -41,7 +41,7 @@ UserSchema.pre('save', function(next){
 });
 
 var UserModel = mongoose.model("User", UserSchema);
-var PinModel = mongoose.model("Pin", PinSchema);
+var PinModel  = mongoose.model("Pin", PinSchema);
 
 module.exports = {
   User: UserModel,
