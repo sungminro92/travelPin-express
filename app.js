@@ -12,7 +12,8 @@ var db = require('./db.js');
 var dotenv = require('dotenv');
 dotenv.config();
 
-mongoose.connect('mongodb://localhost/myTrack');
+// mongoose.connect('mongodb://localhost/myTrack');
+
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhopst:27017/travelPin'
 mongoose.connect(mongoURI);
 
