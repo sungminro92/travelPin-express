@@ -9,8 +9,12 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
 var db = require('./db.js');
+var dotenv = require('dotenv');
+dotenv.config();
 
 mongoose.connect('mongodb://localhost/myTrack');
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhopst:27017/travelPin'
+mongoose.connect(mongoURI);
 
 var index = require('./routes/index.js'); // require index
 var users = require('./routes/users.js'); // require users
