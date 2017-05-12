@@ -4,7 +4,15 @@ var Users = require('../models/userModel.js');
 var Pin = require('../models/pinModel.js');
 var authHelpers = require('../helper/auth.js');
 
+// // ABOUT PAGE
+// router.get('/about', function(req, res) {
+// 	if (err) console.log(err);
+// 	res.render('user/about.hbs');
+// });
+
+
 // GET ROUTE FOR OTHER USERS' PIN INDEX PAGE
+
 router.get('/pins', function(req, res) {
 	Users.find({})
 	.exec(function(err, users) {
